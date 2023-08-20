@@ -9,11 +9,103 @@
     height: 100%;
     top: 0;
     bottom: 0;
-    background-color: aquamarine;
+    background-color: rgb(16, 15, 16);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding: 35px;
-    margin: 0px;
+    .dashboard1-active{
+        background-color: rgb(26, 23, 30);
+        border-right: 2px solid rgb(10, 10, 10);
+        padding-top: 55px;
+    }
+    #image-1{
+        margin-bottom: 20px;
+    }
+    #image-2{
+        margin-bottom: 20px;
+    }
+    .dashboard-2{
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        // padding: 35px;
+        padding-top: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0px;
+        border-right: 2px solid rgb(10, 10, 10);
+    }
+    .dashboard2-space{
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        // padding: 35px;
+        padding-top: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 0px;
+        border-right: 2px solid rgb(10, 10, 10);
+    }
+
+    p{
+        width: 100%;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        text-align: left;
+        padding-left: 20px;
+        color: rgb(135, 131, 131);
+        cursor: pointer;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 155px;
+        margin-bottom: 20px;
+    }
+    .container:not(:last-child){
+        border-bottom: 2px solid rgb(83, 80, 87);
+    }
+    .nav-container{
+        width: 100%;
+        padding-left: 20px;
+    }
+    .links-container{
+        width: 100%;
+        text-decoration: none;
+        color: rgb(83, 80, 87);
+        display: flex;
+        gap: 12px;
+        font-family: sans-serif;
+        margin-bottom: 12px;
+        
+    }
+    .links-container:hover{
+        cursor: pointer;
+        border-right: 2px solid red;
+        transition: border-right 0.1s ease;
+        .icon{
+            color: red;
+        }
+        .links{
+            color: #ffff;
+            text-shadow: 0 0 30px rgba(220, 58, 58, 1);
+        }
+    }
+    .container-1{
+        padding-top: 14px;
+    }
+    a{
+        text-decoration: none;
+    }
+
 }
