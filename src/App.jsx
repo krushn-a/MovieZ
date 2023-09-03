@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import "./App.scss"
 import { fetchData } from './utils/api'
 import { useSelector, useDispatch } from 'react-redux'
-import { getApiConfiguration} from './store/HomeSlice'
+import { getApiConfiguration, getGenres} from './store/HomeSlice'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./pages/home/Home";
 import Bookmarked  from "./pages/bookmarked/Bookmarked";
@@ -14,6 +14,7 @@ import Help from './pages/help/Help';
 import Recent from './pages/recent/Recent';
 import Settings from './pages/settings/Settings';
 import TopRated from './pages/topRated/TopRated';
+import SearchResult from './pages/SearchResult/SearchResult'
 
 
 function App() {
@@ -23,16 +24,40 @@ function App() {
     state.home
   );
   useEffect(() => {
-    apiTesting();
+    apiConfig();
+    genrescall();
   }, []);
-
-  const apiTesting =  () => {
-    fetchData("/movie/top_rated")
+  const apiConfig =  () => {
+    fetchData("/configuration")
       .then((res) => {
-        console.log(res);
-        dispatch(getApiConfiguration(res));
+        const url = {
+          backdrop: res.images.base_url + "original",
+          poster: res.images.base_url + "original",
+          profile: res.images.base_url + "original"
+        }
+        dispatch(getApiConfiguration(url));
       });
   };
+
+
+  const genrescall = async() => {
+    let promises = [];
+    let endpoints = ["tv","movie"];
+    let AllGenres = {};
+
+    endpoints.forEach((url) => {
+      promises.push(fetchData(`/genre/${url}/list`));
+    });
+    const data = await Promise.all(promises);
+    
+    data.map(({genres}) => {
+      return genres.map((item) => (AllGenres[item.id] = item));
+    }) // yahan jo genres hai woh array ke under jo object hai uske andar ka ek property hai
+
+    dispatch(getGenres(AllGenres));
+  }
+
+
 
   return (
     <div className='App'>
@@ -48,6 +73,7 @@ function App() {
             <Route path="/recent" element={<Recent />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/toprated" element={<TopRated />} />
+            <Route path="/search/:query" element={<SearchResult />} />
         </Routes>
       </BrowserRouter>
     </div>

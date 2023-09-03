@@ -10,6 +10,11 @@ import {PiDownloadSimpleBold} from "react-icons/pi";
 import {AiOutlineSetting} from "react-icons/ai";
 import {BiHelpCircle} from "react-icons/bi";
 import {IoLogOutOutline} from "react-icons/io5";
+import {BiSearch} from "react-icons/bi";
+import {GiSettingsKnobs} from "react-icons/gi";
+// import {HiSignal} from "react-icons/hi";
+import {AiOutlineMessage} from "react-icons/ai";
+import {IoMdNotificationsOutline} from "react-icons/io";
 
 const Routes = [
     [
@@ -84,6 +89,34 @@ const Routes = [
             path: "/logout",
             name: "Logout",
             icon: <IoLogOutOutline />,
+        }
+    ],
+    [
+        {
+            id: 11,
+            path:"/search",
+            name: "Search",
+            icon: <BiSearch />,
+        },
+        {
+            id: 12,
+            path:"/settingknob",
+            name: "Settingknob",
+            icon: <GiSettingsKnobs />,
+        }
+    ],
+    [
+        {
+            id: 13,
+            path:"/message",
+            name: "Message",
+            icon: <AiOutlineMessage />,
+        },
+        {
+            id: 14,
+            path:"/notification",
+            name: "Notification",  
+            icon: <IoMdNotificationsOutline />,
         }
     ]
 ]

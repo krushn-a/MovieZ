@@ -11,7 +11,7 @@ export default function LeftDashboard() {
   };
 
   return (
-    <div className='leftdashboard'>
+    <div className='leftdashboard' style={{width:active ? "18%":"15%", transition:"all 0.3s ease"}}>
       <div style={
         {width: active? "52px":"0px", height: "100%", borderRight: active? "2px solid rgb(10, 10, 10)":"0px", transition:"all 0.3s ease"}
         } className='dashboard1-active'>
@@ -52,6 +52,20 @@ export default function LeftDashboard() {
       <div className="container container-3">
       {
           Routes[2].map((route) => {
+            return (
+              <NavLink to={route.path} key={route.id} className="nav-container">
+                <div className="links-container">
+                  <div className="icon">{route.icon}</div>
+                  <div className="links">{route.name}</div>
+                </div>
+              </NavLink>
+            )
+          })
+      }
+      </div>
+      <div className="container container-4">
+        {
+          Routes[3].map((route) => {
             return (
               <NavLink to={route.path} key={route.id} className="nav-container">
                 <div className="links-container">
